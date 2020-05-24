@@ -333,7 +333,7 @@ void removeVerticalSeam(
     // energy map is now invalid - it needs to be recalculated along the seam
     // recalculate energy map values along seam
     currentWidth -= 1;
-    for (int row = 0; row < originalHeight; row++) {
+    for (int row = 0; row < currentHeight; row++) {
         int removedColumn = seamColumnIndices[row];
         if (removedColumn > 0) {
             ENERGY_IMG_VAL(workingenergyMapArray, originalWidth, removedColumn - 1, row) = getPixelEnergy(

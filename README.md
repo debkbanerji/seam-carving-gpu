@@ -22,7 +22,7 @@ I've used CudaMallocManaged to allocate memory because it's easier to code, but 
 More comprehensive speed test implementations, on small and large images, comparing the new parallel approach to the standard parallel approach as well as the single threaded approach graphed as a function of input size.
 
 ### 5. Add in clustering algorithm variation (single K)
-This is a more novel improvement - it's a change in the seam carving algorithm itself that has the potential to greatly improve the algorithm's ability to reason about preserving the global structure of the image, something which seam carving has historically struggled with. This hasn't been done before, so I actually need to implement it to see how well it works.
+This is a more novel improvement - it's a change in the seam carving algorithm itself that has the potential to greatly improve the algorithm's ability to reason about preserving the global structure of the image, something which seam carving has historically struggled with. This hasn't been done before, and is currently just an idea of mine, so I actually need to implement it to see how well it works.
 
 The idea is that in addition to minimizing the energy values based on differences in values of pixels, we also try to maintain the sizes of different regions of the image using image segmentation with K means clustering. One nice thing about this variation is that the k means clustering preprocessing step can also take advantage of GPU acceleration (TODO: find a library that already implements a parallelized version of this using CUDA).
 
@@ -38,6 +38,6 @@ In the previous approach, K is a parameter that defines the number of regions, a
 
 It's easy to see how instead of using K means clustering to determine the regions, we could use semantic image segmentation, likely using an existing convolutional neural network architecture.
 
-## 8. Create desktop app
+### 8. Create desktop app
 
 Package this as an application so that it can be used by anyone without them having to compile it.
